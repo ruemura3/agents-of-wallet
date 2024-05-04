@@ -26,7 +26,7 @@ export default function Home() {
         />
       }
       titleText="Assets"
-      placeholder="Ask me anything!"
+      placeholder="How much eth do I have in Ethereum chain?"
       emptyStateComponent={InfoCard}
     ></ChatWindow>
   );

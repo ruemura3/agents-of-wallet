@@ -21,6 +21,10 @@ function getUrl(chain: string) {
       return `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`;
     case "base":
       return `https://base-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`;
+    case "base sepolia":
+      return `https://base-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`;
+    case "base sepolia chain":
+      return `https://base-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`;
     default:
       throw new Error("Invalid chain id");
   }
@@ -71,6 +75,9 @@ export async function POST(req: NextRequest) {
           chain: z.string().describe("blockchain name"),
         }),
         func: async ({ chain }) => {
+          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/address`)
+          const d = await res.json()
+          const address = d.address
           const url = getUrl(chain);
           const response = await fetch(
             url,

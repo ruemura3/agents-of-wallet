@@ -29,7 +29,7 @@ export default function Home() {
         />
       }
       titleText="Trade Crypto"
-      placeholder="Ask me anything!"
+      placeholder="What can you do?"
       emptyStateComponent={InfoCard}
     ></ChatWindow>
   );

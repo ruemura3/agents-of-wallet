@@ -28,7 +28,7 @@ export default function Home() {
         />
       }
       titleText="Q&A"
-      placeholder="Ask me anything!"
+      placeholder="What can you do?"
       emptyStateComponent={InfoCard}
     ></ChatWindow>
   );
