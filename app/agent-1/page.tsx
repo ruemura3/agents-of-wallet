@@ -1,4 +1,4 @@
-import { ChatWindowTrend } from "@/components/ChatWindowTrend";
+import { ChatWindow } from "@/components/ChatWindow";
 
 export default function Home() {
   const InfoCard = (
@@ -21,7 +21,7 @@ export default function Home() {
     </div>
   );
   return (
-    <ChatWindowTrend
+    <ChatWindow
       endpoint="api/chat/agent-1"
       agent={
         <img
@@ -29,9 +29,9 @@ export default function Home() {
           alt=""
         />
       }
-      titleText="Chat"
+      titleText="Crypto trend"
       placeholder="Ask me anything!"
       emptyStateComponent={InfoCard}
-    ></ChatWindowTrend>
+    ></ChatWindow>
   );
 }
