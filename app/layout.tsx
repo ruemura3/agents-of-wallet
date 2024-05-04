@@ -1,8 +1,9 @@
 import "./globals.css";
+import "@rainbow-me/rainbowkit/styles.css";
 import { Press_Start_2P } from "next/font/google";
 
 import { Navbar } from "@/components/Navbar";
-import NextAuthProviders from "@/components/NextAuthProvider";
+import RainbowKitProviders from "@/components/RainbowKitProviders";
 
 const pressStart2P = Press_Start_2P({
   subsets: ["latin"],
@@ -21,12 +22,12 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/images/favicon.ico" />
       </head>
       <body className={pressStart2P.className}>
-        <NextAuthProviders>
+        <RainbowKitProviders>
           <div className="flex flex-col p-4 md:p-12 h-[100vh]">
             <Navbar></Navbar>
             {children}
           </div>
-        </NextAuthProviders>
+        </RainbowKitProviders>
       </body>
     </html>
   );
