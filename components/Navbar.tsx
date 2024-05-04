@@ -18,7 +18,7 @@ export function Navbar() {
         }`}
         href="/agent-1"
       >
-        Get crypto trend
+        Crypto trend
       </a>
       <a
         className={`mr-4 ${
