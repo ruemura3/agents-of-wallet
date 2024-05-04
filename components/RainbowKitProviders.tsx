@@ -81,7 +81,7 @@ export default function RainbowKitProviders({
       <SessionProvider>
         <QueryClientProvider client={queryClient}>
           <RainbowKitSiweNextAuthProvider>
-            <RainbowKitProvider>{children}</RainbowKitProvider>
+            <RainbowKitProvider locale="en">{children}</RainbowKitProvider>
           </RainbowKitSiweNextAuthProvider>
         </QueryClientProvider>
       </SessionProvider>
