@@ -10,7 +10,7 @@ export function Navbar() {
         className={`mr-4 ${pathname === "/" ? "text-white border-b" : ""}`}
         href="/"
       >
-        Intro
+        🕴️ Intro
       </a>
       <a
         className={`mr-4 ${
@@ -18,31 +18,31 @@ export function Navbar() {
         }`}
         href="/agent-1"
       >
-        Crypto trend
+        📈 Crypto trend
       </a>
       <a
         className={`mr-4 ${
-          pathname === "/agents" ? "text-white border-b" : ""
+          pathname === "/agent-2" ? "text-white border-b" : ""
         }`}
-        href="/agents"
+        href="/agent-2"
       >
-        🦜 Agents
+        👛 Assets
       </a>
       <a
         className={`mr-4 ${
-          pathname === "/retrieval" ? "text-white border-b" : ""
+          pathname === "/agent-3" ? "text-white border-b" : ""
         }`}
-        href="/retrieval"
+        href="/agent-3"
       >
-        🐶 Retrieval
+        💰 Trade crypto
       </a>
       <a
         className={`mr-4 ${
-          pathname === "/retrieval_agents" ? "text-white border-b" : ""
+          pathname === "/agent-4" ? "text-white border-b" : ""
         }`}
-        href="/retrieval_agents"
+        href="/agent-4"
       >
-        🤖 Retrieval Agents
+        🙋 Q&A
       </a>
     </nav>
   );

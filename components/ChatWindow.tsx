@@ -192,7 +192,6 @@ export function ChatWindow(props: {
                   message={m}
                   agent={agent}
                   sources={sourcesForMessages[sourceKey]}
-                  forLogin={messages.length - i === 2}
                 ></ChatMessageBubble>
               );
             })
