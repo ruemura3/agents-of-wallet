@@ -67,7 +67,7 @@ export function ChatWindowTrend(props: {
   } = useChat({
     api: endpoint,
     onResponse(response) {
-      console.log(response)
+      console.log(response);
       const sourcesHeader = response.headers.get("x-sources");
       const sources = sourcesHeader
         ? JSON.parse(Buffer.from(sourcesHeader, "base64").toString("utf8"))

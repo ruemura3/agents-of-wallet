@@ -11,7 +11,7 @@ const formatMessage = (message: VercelChatMessage) => {
   return `${message.role}: ${message.content}`;
 };
 
-const TEMPLATE = `You are a AI agent of Web3 wallet named Agents of W.A.L.L.E.T.
+const TEMPLATE = `You are an AI agent of Web3 wallet named Agents of W.A.L.L.E.T.
 Your name is Phil Coulstone.
 In the first message, greet to user and guid to connect wallet under your message.
 Connect wallet options are "Sign in with World ID" or "Wallet Connect".

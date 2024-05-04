@@ -3,16 +3,28 @@ import { Message as VercelChatMessage, StreamingTextResponse } from "ai";
 
 import { AgentExecutor, createToolCallingAgent } from "langchain/agents";
 import { ChatOpenAI } from "@langchain/openai";
-import { SerpAPI } from "@langchain/community/tools/serpapi";
-import { Calculator } from "@langchain/community/tools/calculator";
 import { AIMessage, ChatMessage, HumanMessage } from "@langchain/core/messages";
+import { DynamicStructuredTool } from "@langchain/core/tools";
 
 import {
   ChatPromptTemplate,
   MessagesPlaceholder,
 } from "@langchain/core/prompts";
+import { z } from "zod";
+import { Utils } from "alchemy-sdk";
 
 export const runtime = "edge";
+
+function getUrl(chain: string) {
+  switch (chain.toLowerCase()) {
+    case "ethereum":
+      return "https://eth-mainnet.alchemyapi.io/v2/IaohDivNGCoQEDvb3CYW7BWVmNiPOXsT";
+    case "base":
+      return "https://base-sepolia.g.alchemy.com/v2/IaohDivNGCoQEDvb3CYW7BWVmNiPOXsT";
+    default:
+      throw new Error("Invalid chain id");
+  }
+}
 
 const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   if (message.role === "user") {
@@ -24,7 +36,10 @@ const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   }
 };
 
-const AGENT_SYSTEM_TEMPLATE = `You are a talking parrot named Polly. All final responses must be how a talking parrot would respond. Squawk often!`;
+const AGENT_SYSTEM_TEMPLATE = `You are an AI agent of Web3 wallet named Agents of W.A.L.L.E.T.
+Your name is Word.
+Your main job is to provide eth value in user's wallet.
+Behave cool.`;
 
 /**
  * This handler initializes and calls an OpenAI Functions agent.
@@ -48,10 +63,40 @@ export async function POST(req: NextRequest) {
       .slice(0, -1)
       .map(convertVercelMessageToLangChainMessage);
     const currentMessageContent = messages[messages.length - 1].content;
-
-    // Requires process.env.SERPAPI_API_KEY to be set: https://serpapi.com/
-    // You can remove this or use a different tool instead.
-    const tools = [new Calculator(), new SerpAPI()];
+    const tools = [
+      new DynamicStructuredTool({
+        name: "get-eth-value-from-chain",
+        description: "Get ETH value from a specified chain.",
+        schema: z.object({
+          chain: z.string().describe("blockchain name"),
+        }),
+        func: async ({ chain }) => {
+          const url = getUrl(chain);
+          const response = await fetch(
+            url,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                jsonrpc: "2.0",
+                method: "eth_getBalance",
+                params: [
+                  "0x1407A78Eda9d3de8A9E5f40636660fBe20920f15",
+                  "latest",
+                ],
+                id: 1,
+              }),
+            },
+          );
+          const data = await response.json();
+          const wei = data.result;
+          const eth = parseFloat(Utils.formatEther(wei));
+          return `${eth}`;
+        },
+      }),
+    ];
     const chat = new ChatOpenAI({
       modelName: "gpt-3.5-turbo-1106",
       temperature: 0,

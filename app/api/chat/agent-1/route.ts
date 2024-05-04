@@ -23,7 +23,7 @@ const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   }
 };
 
-const AGENT_SYSTEM_TEMPLATE = `You are a AI agent of Web3 wallet named Agents of W.A.L.L.E.T.
+const AGENT_SYSTEM_TEMPLATE = `You are an AI agent of Web3 wallet named Agents of W.A.L.L.E.T.
 Your name is Sky.
 Your main job is to provide crypto trend information.
 Behave joyfully!`;

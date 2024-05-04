@@ -8,11 +8,11 @@ import { useRef, useState, ReactElement } from "react";
 import type { FormEvent } from "react";
 import type { AgentStep } from "langchain/schema";
 
-import { ChatMessageBubble } from "@/components/ChatMessageBubble";
+import { ChatMessageBubbleAssets } from "@/components/ChatMessageBubbleAssets";
 import { UploadDocumentsForm } from "@/components/UploadDocumentsForm";
 import { IntermediateStep } from "./IntermediateStep";
 
-export function ChatWindow(props: {
+export function ChatWindowAssets(props: {
   endpoint: string;
   emptyStateComponent: ReactElement;
   placeholder?: string;
@@ -187,13 +187,12 @@ export function ChatWindow(props: {
               return m.role === "system" ? (
                 <IntermediateStep key={m.id} message={m}></IntermediateStep>
               ) : (
-                <ChatMessageBubble
+                <ChatMessageBubbleAssets
                   key={m.id}
                   message={m}
                   agent={agent}
                   sources={sourcesForMessages[sourceKey]}
-                  forLogin={messages.length - i === 2}
-                ></ChatMessageBubble>
+                ></ChatMessageBubbleAssets>
               );
             })
           : ""}
