@@ -22,7 +22,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials, req) {
         try {
           const siwe = new SiweMessage(
-            JSON.parse(credentials?.message || "{}")
+            JSON.parse(credentials?.message || "{}"),
           );
           const nextAuthUrl = new URL(process.env.NEXTAUTH_URL as string);
           const result = await siwe.verify({
@@ -76,5 +76,4 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  debug: true,
 };

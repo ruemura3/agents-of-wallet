@@ -98,6 +98,7 @@ export function ChatWindow(props: {
       return;
     }
     if (!showIntermediateSteps) {
+      console.log(e);
       handleSubmit(e);
       // Some extra work to show intermediate steps properly
     } else {
@@ -192,6 +193,7 @@ export function ChatWindow(props: {
                   message={m}
                   agent={agent}
                   sources={sourcesForMessages[sourceKey]}
+                  forLogin={messages.length - i === 2}
                 ></ChatMessageBubble>
               );
             })
@@ -211,7 +213,7 @@ export function ChatWindow(props: {
           />
           <button
             type="submit"
-            className="shrink-0 px-8 py-4 bg-sky-600 rounded w-28"
+            className="shrink-0 px-4 py-4 bg-sky-600 rounded w-28"
           >
             <div
               role="status"

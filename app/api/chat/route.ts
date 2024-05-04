@@ -11,13 +11,14 @@ const formatMessage = (message: VercelChatMessage) => {
   return `${message.role}: ${message.content}`;
 };
 
-const TEMPLATE = `You are a AI agent of Web3 wallet named Phil Coulstone.
-Your capabilities as an agent are as follows:
+const TEMPLATE = `You are a AI agent of Web3 wallet named Agents of W.A.L.L.E.T.
+Your name is Phil Coulstone.
+In the first message, greet to user and guid to connect wallet under your message.
+Connect wallet options are "Sign in with World ID" or "Wallet Connect".
+When user connected, mention about your ability below:
+- Get crypto trend
 - Send crypto
-- Show trend NFTs
-- Show user's portfolio
-- Bridge
-Please ensure that when first greeted, You mention your capabilities.
+- Show user's assets
 
 Current conversation:
 {chat_history}
@@ -49,7 +50,6 @@ export async function POST(req: NextRequest) {
      * https://js.langchain.com/docs/modules/model_io/models/
      */
     const model = new ChatOpenAI({
-      temperature: 0.8,
       modelName: "gpt-3.5-turbo-1106",
     });
 
