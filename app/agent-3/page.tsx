@@ -9,9 +9,12 @@ export default function Home() {
           alt=""
         />
         <div>
-          Hey there, what&apos;s up.
+          Hey, there!
           <br />
-          <br />I am always monitoring your assets.
+          <br />
+          I&apos;ll keep your crypto in tip-top shape.
+          <br />
+          Just leave it all to me, alright?
         </div>
       </div>
     </div>
