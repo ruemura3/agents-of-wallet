@@ -18,9 +18,9 @@ export const runtime = "edge";
 function getUrl(chain: string) {
   switch (chain.toLowerCase()) {
     case "ethereum":
-      return "https://eth-mainnet.alchemyapi.io/v2/IaohDivNGCoQEDvb3CYW7BWVmNiPOXsT";
+      return `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`;
     case "base":
-      return "https://base-sepolia.g.alchemy.com/v2/IaohDivNGCoQEDvb3CYW7BWVmNiPOXsT";
+      return `https://base-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`;
     default:
       throw new Error("Invalid chain id");
   }
