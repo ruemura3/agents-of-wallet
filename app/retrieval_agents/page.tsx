@@ -95,7 +95,12 @@ export default function AgentsPage() {
       placeholder={
         'Beep boop! I\'m a robot retrieval-focused agent! Ask, "What are some ways of doing retrieval in LangChain.js?"'
       }
-      emoji="🤖"
+      agent={
+        <img
+          src="https://noun-api.com/beta/pfp?head=68&glasses=3&background=0&body=13&accessory=12"
+          alt=""
+        />
+      }
       titleText="Robbie the Retrieval Robot"
     ></ChatWindow>
   );

@@ -106,7 +106,12 @@ export default function AgentsPage() {
       placeholder={
         'I\'ve got a nose for finding the right documents! Ask, "What is a document loader?"'
       }
-      emoji="🐶"
+      agent={
+        <img
+          src="https://noun-api.com/beta/pfp?head=68&glasses=3&background=0&body=13&accessory=12"
+          alt=""
+        />
+      }
       titleText="Dana the Document-Retrieving Dog"
     ></ChatWindow>
   );

@@ -95,7 +95,12 @@ export default function AgentsPage() {
       endpoint="api/chat/structured_output"
       emptyStateComponent={InfoCard}
       placeholder={`No matter what you type here, I'll always return the same JSON object with the same structure!`}
-      emoji="🧱"
+      agent={
+        <img
+          src="https://noun-api.com/beta/pfp?head=68&glasses=3&background=0&body=13&accessory=12"
+          alt=""
+        />
+      }
       titleText="Structured Output"
     ></ChatWindow>
   );

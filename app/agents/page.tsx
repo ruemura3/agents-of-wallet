@@ -81,7 +81,12 @@ export default function AgentsPage() {
       emptyStateComponent={InfoCard}
       placeholder="Squawk! I'm a conversational agent! Ask me about the current weather in Honolulu!"
       titleText="Polly the Agentic Parrot"
-      emoji="🦜"
+      agent={
+        <img
+          src="https://noun-api.com/beta/pfp?head=68&glasses=3&background=0&body=13&accessory=12"
+          alt=""
+        />
+      }
       showIntermediateStepsToggle={true}
     ></ChatWindow>
   );
